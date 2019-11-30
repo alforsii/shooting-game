@@ -8,6 +8,7 @@ class Game {
     this.enemies = [];
     this.missiles = [];
     this.numberOfEnemies = 5;
+    this.missNum = 10;
   }
 
   start() {
@@ -16,6 +17,9 @@ class Game {
     this.player.draw();
     this.enemies.forEach(enemy => {
       enemy.update(this.enemies);
+    });
+    this.missiles.forEach(missile => {
+      missile.updateMiss(this.missiles);
     });
   }
   clear() {
@@ -31,11 +35,12 @@ class Game {
     }
   }
 
-  genMissiles(num) {
+  genMissiles() {
     this.missiles = [];
-    for (let i = 0; i < num; i++) {
-      let x = this.player.x + this.player.width / 2;
-      let y = this.player.y;
+    let missArr = [this.player.x + 9, this.player.x + 23];
+    for (let i = 0; i < this.missNum; i++) {
+      let x = missArr[Math.floor(Math.random() * missArr.length)];
+      let y = this.player.y - 15;
       this.missiles.push(new Missiles(this, x, y, 7, 7, 'green'));
     }
   }

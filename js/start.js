@@ -6,7 +6,7 @@ window.addEventListener('load', () => {
     newGame.start();
   }
 
-  newGame.genMissiles(10);
+  newGame.genMissiles();
   // console.log('Output for: newGame.missiles', newGame.missiles);
   newGame.generateEnemy();
   animate();
