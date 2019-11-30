@@ -1,18 +1,25 @@
 class Missiles extends Enemy {
   constructor(game, x, y, w, h, color) {
     super(game, x, y, w, h, color);
-    this.vy = -Math.random() * 2;
+    this.vy = -1;
   }
 
-  updateMiss(enemy) {
+  updateMiss(missile) {
     this.draw();
-    for (let i = 0; i < enemy.length; i++) {
-      enemy[i].y += this.vy;
-      // if enemy[i] is going off the left of the screen
-      if (enemy[i].y < 0) {
-        // enemy[i].y = -this.height;
+    for (let i = 0; i < missile.length; i++) {
+      //   this.vy = -Math.random() * 0.5 + 0.1;
+      missile[i].y += this.vy;
+      // if missile[i] is going off the left of the screen
+      if (missile[i].y < 0) {
+        // missile[i].y = -this.height;
+        this.game.genMissiles();
+        this.game.genMissiles();
         this.game.genMissiles();
       }
+      this.game.hitDetect(missile[i], i);
+      //   if (missile[i].y <= 0) {
+      //     missile.splice(i, 1);
+      //   }
     }
   }
 }

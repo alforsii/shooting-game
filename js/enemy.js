@@ -1,6 +1,7 @@
 class Enemy {
   constructor(game, x, y, w, h, color) {
     this.game = game;
+    this.id = Math.floor(Math.random() * 1000 + 1);
     this.x = x;
     this.y = y;
     this.width = w;
@@ -36,5 +37,12 @@ class Enemy {
     // this.game.ctx.moveTo(this.x + 27, this.y);
     // this.game.ctx.lineTo(this.x + 27, this.y - 15);
     // this.game.ctx.stroke();
+  }
+
+  // get the four side coordinates of the rectangle
+  getDistance(x1, y1, x2, y2) {
+    let xDistance = x2 - x1;
+    let yDistance = y2 - y1;
+    return Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
   }
 }
