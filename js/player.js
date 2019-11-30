@@ -46,10 +46,10 @@ class Player {
 
   draw() {
     if (this.controller.left) {
-      this.vx -= 2;
+      this.vx -= 1;
     }
     if (this.controller.right) {
-      this.vx += 2;
+      this.vx += 1;
     }
 
     this.x += this.vx;

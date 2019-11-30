@@ -2,18 +2,21 @@ class Game {
   constructor() {
     this.canvas = document.getElementById('canvas');
     this.ctx = canvas.getContext('2d');
-    this.enemy = new Enemy(this);
+    // this.enemy = new Enemy(this);
     // this.missiles = new Missiles(this);
     this.player = new Player(this);
     this.enemies = [];
     this.missiles = [];
-    this.numberOfEnemies = 5;
-    this.missNum = 22;
+    this.missNum = 15;
+    this.score = 0;
+    this.life = 3;
+    this.image = new Image();
   }
 
   start() {
     this.player.keyEvent();
     this.clear();
+    this.background();
     this.player.draw();
     this.enemies.forEach(enemy => {
       enemy.update(this.enemies);
@@ -25,9 +28,17 @@ class Game {
   clear() {
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
+  background() {
+    this.image.src = './img/titanic-galaxies.jpg';
+    this.ctx.drawImage(this.image, 0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.fillStyle = 'white';
+    this.ctx.font = '35px Arial';
+    this.ctx.fillText(`Score: ${this.score}`, 50, 50);
+  }
   generateEnemy() {
     this.enemies = [];
-    for (let i = 0; i < this.numberOfEnemies; i++) {
+    let numberOfEnemies = Math.floor(Math.random() * 20 + 5);
+    for (let i = 0; i < numberOfEnemies; i++) {
       let x = Math.floor(Math.random() * (this.canvas.width - 10) + 10);
       let y = -30;
       //   if (i !== 0) {
@@ -45,7 +56,7 @@ class Game {
       //       ) {
       //         x = Math.floor(Math.random() * (this.canvas.width - 10) + 10);
       //         y = -30;
-      //         j = -1;
+      //         j = 0;
       //       }
       //     }
       //   }
@@ -74,6 +85,10 @@ class Game {
       ) {
         // this.missiles.splice(this.missiles[mi], 1);
         this.enemies.splice(i, 1);
+        this.score++;
+      }
+      if (this.enemies.length === 0) {
+        this.generateEnemy();
       }
     }
   }
