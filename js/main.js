@@ -10,8 +10,8 @@ class Game {
   start() {
     setInterval(() => {
       this.clear();
+      this.payer.keyEvent();
       this.payer.draw();
-      this.payer.move();
       //   this.payer.getMouse();
       //   this.payer.moveWithMouse();
     }, 30);
