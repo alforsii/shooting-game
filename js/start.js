@@ -1,4 +1,10 @@
 window.addEventListener('load', () => {
   const newGame = new Game();
-  newGame.start();
+
+  function animate() {
+    requestAnimationFrame(animate);
+    newGame.start();
+  }
+  newGame.generateEnemy();
+  animate();
 });

@@ -20,7 +20,7 @@ class Player {
       //   console.log(event.keyCode);
 
       let keyState = event.type === 'keydown' ? true : false;
-      console.log('Output for: Player -> keyEvent -> keyState', keyState);
+      //   console.log('Output for: Player -> keyEvent -> keyState', keyState);
       switch (event.keyCode) {
         case 37:
           this.controller.left = keyState;
@@ -32,7 +32,7 @@ class Player {
     });
     document.addEventListener('keyup', event => {
       let keyState = event.type === 'keyup' ? false : true;
-      console.log('Output for: Player -> keyEvent -> keyState', keyState);
+      //   console.log('Output for: Player -> keyEvent -> keyState', keyState);
       switch (event.keyCode) {
         case 37:
           this.controller.left = keyState;
