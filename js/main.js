@@ -14,7 +14,7 @@ class Game {
     this.clear();
     this.payer.draw();
     this.enemies.forEach(enemy => {
-      enemy.update();
+      enemy.update(this.enemies);
     });
   }
   clear() {
