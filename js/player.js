@@ -12,7 +12,6 @@ class Player {
       left: false,
       right: false,
     };
-    // this.mouse = { x: canvas.width / 2, y: canvas.height - this.height - 3 };
   }
 
   keyEvent() {
@@ -60,7 +59,7 @@ class Player {
     } else if (this.x > this.game.canvas.width) {
       this.x = -this.width;
     }
-
+    //this is my player
     this.game.ctx.fillStyle = this.color;
     this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
     this.game.ctx.fill();
@@ -75,21 +74,4 @@ class Player {
     this.game.ctx.lineTo(this.x + 27, this.y - 15);
     this.game.ctx.stroke();
   }
-  //   moveWithMouse() {
-  //     this.x = this.mouse.x;
-  //     this.y = this.mouse.y;
-  //   }
-
-  //   getMouse() {
-  //     document.addEventListener('mousemove', event => {
-  //       this.mouse.x = event.clientX;
-  //       //   this.mouse.y = event.clientY;
-  //       if (this.x + this.width < 0) {
-  //         this.mouse.x = 0;
-  //       }
-  //       if (this.x + this.width > this.game.canvas.width) {
-  //         this.mouse.x = this.game.canvas.width - this.width - 5;
-  //       }
-  //     });
-  //   }
 }

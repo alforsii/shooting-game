@@ -13,8 +13,6 @@ class Missiles extends Enemy {
       if (missile[i].y < 0) {
         // missile[i].y = -this.height;
         this.game.genMissiles();
-        this.game.genMissiles();
-        this.game.genMissiles();
       }
       this.game.hitDetect(missile[i], i);
       //   if (missile[i].y <= 0) {

@@ -14,8 +14,8 @@ class Game {
   }
 
   start() {
-    this.player.keyEvent();
     this.clear();
+    this.player.keyEvent();
     this.background();
     this.player.draw();
     this.enemies.forEach(enemy => {
@@ -24,6 +24,9 @@ class Game {
     this.missiles.forEach((m, mi) => {
       m.updateMiss(this.missiles);
     });
+    // if (newGame.score < 5) {
+    //   newGame.gameOver();
+    // }
   }
   clear() {
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -41,25 +44,25 @@ class Game {
     for (let i = 0; i < numberOfEnemies; i++) {
       let x = Math.floor(Math.random() * (this.canvas.width - 10) + 10);
       let y = -30;
-      //   if (i !== 0) {
-      //     for (let j = 0; j < this.enemies.length; j++) {
-      //       //here we're calling class Enemy method for collision detect
-      //       let distance = this.enemies.getDistance(
-      //         x,
-      //         y,
-      //         this.enemies[i].x,
-      //         this.enemies[i].y
-      //       );
-      //       if (
-      //         distance - this.enemies[i].height <= 0 ||
-      //         distance - this.enemies[i].width <= 0
-      //       ) {
-      //         x = Math.floor(Math.random() * (this.canvas.width - 10) + 10);
-      //         y = -30;
-      //         j = 0;
-      //       }
+      // if (i !== 0) {
+      //   for (let j = 0; j < this.enemies.length; j++) {
+      //     //here we're calling class Enemy method for collision detect
+      //     let distance = this.enemies.getDistance(
+      //       x,
+      //       y,
+      //       this.enemies[i].x,
+      //       this.enemies[i].y
+      //     );
+      //     if (
+      //       distance - this.enemies[i].height <= 0 ||
+      //       distance - this.enemies[i].width <= 0
+      //     ) {
+      //       x = Math.floor(Math.random() * (this.canvas.width - 10) + 10);
+      //       y = -30;
+      //       j = 0;
       //     }
       //   }
+      // }
 
       this.enemies.push(new Enemy(this, x, y, 40, 30, 'red'));
     }
@@ -91,5 +94,20 @@ class Game {
         this.generateEnemy();
       }
     }
+  }
+
+  gameOver() {
+    this.clear();
+    this.ctx.textAlign = 'center';
+    this.ctx.fillStyle = 'black';
+    this.ctx.font = '35px Arial';
+    this.ctx.fillText(`Score: ${this.score}`, 100, 50);
+    this.ctx.fillStyle = 'red';
+    this.ctx.font = '75px Arial';
+    this.ctx.fillText(
+      `Game Over`,
+      this.canvas.width / 2,
+      this.canvas.height / 2
+    );
   }
 }

@@ -7,8 +7,8 @@ window.addEventListener('load', () => {
   }
 
   newGame.genMissiles();
-  console.log('Output for: newGame.enemies', newGame.enemies);
-  console.log('Output for: newGame.missiles', newGame.missiles);
   newGame.generateEnemy();
+  // console.log('Output for: newGame.enemies', newGame.enemies);
+  // console.log('Output for: newGame.missiles', newGame.missiles);
   animate();
 });
